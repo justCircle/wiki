@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--这上面的是所有代码通用的-->
+
+<!-- 需要跟接口名字对应起来-->
+<mapper namespace="com.jiawa.wiki.mapper.TestMapper" >
+
+    <!--这里的id 是 TestMapper接口的变量名     后面的resultType 是Test实体类-->
+    <select id="list" resultType="com.jiawa.wiki.domain.Test">
+        select `id`, `name`, `password` from `test`
+    </select>
+
+</mapper>

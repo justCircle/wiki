@@ -1,7 +1,9 @@
 package com.jiawa.wiki.controller;
 
 import com.jiawa.wiki.domain.Ebook;
+import com.jiawa.wiki.req.EbookReq;
 import com.jiawa.wiki.resp.CommonResp;
+import com.jiawa.wiki.resp.EbookResp;
 import com.jiawa.wiki.service.EbookService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,14 +34,17 @@ public class EbookController {
         return ebookService.list();
     }*/
 
+    //在list方法里面（封装一个请求参数）EbookReq，这样如果要按id查找，就不用在添加id参数了
     @RequestMapping("/ebook/list")
-    public CommonResp list ()
+    public CommonResp list (EbookReq req)
     {
         /*这里的object是泛型，是实际返回业务数据的类型，就是content的类型
         CommonResp<Object> resp = new CommonResp<>();*/
-        CommonResp<Object> resp = new CommonResp<>();
-        List<Ebook> list= ebookService.list();
+        CommonResp<List<EbookResp>> resp = new CommonResp<>();
+        List<EbookResp> list= ebookService.list(req);
         resp.setContent(list);
         return resp;
+
+
     }
 }

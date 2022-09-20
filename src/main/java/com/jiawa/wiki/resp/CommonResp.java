@@ -1,7 +1,7 @@
 package com.jiawa.wiki.resp;
 
 
-//通用的返回规范，Resp 相应
+//通用的返回规范，Resp：回应
 public class CommonResp<T> {
 
     /**

@@ -1,6 +1,7 @@
 package com.jiawa.wiki.controller;
 
 import com.jiawa.wiki.domain.Ebook;
+import com.jiawa.wiki.resp.CommonResp;
 import com.jiawa.wiki.service.EbookService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,22 @@ public class EbookController {
     private EbookService ebookService;
 
 
-    @RequestMapping("/ebook/list")
+   /*
+   每次返回的内容不太好，通过CommonResp类，把返回值的规范重新定义一下
+   @RequestMapping("/ebook/list")
     public List<Ebook> list ()
     {
         return ebookService.list();
+    }*/
+
+    @RequestMapping("/ebook/list")
+    public CommonResp list ()
+    {
+        /*这里的object是泛型，是实际返回业务数据的类型，就是content的类型
+        CommonResp<Object> resp = new CommonResp<>();*/
+        CommonResp<Object> resp = new CommonResp<>();
+        List<Ebook> list= ebookService.list();
+        resp.setContent(list);
+        return resp;
     }
 }

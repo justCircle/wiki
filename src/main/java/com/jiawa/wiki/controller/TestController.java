@@ -13,6 +13,8 @@ import java.util.List;
 //展示字符串
 @RestController
 
+
+
 //让写的TestMapper接口被知道
 @MapperScan("com.jiawa.wiki.mapper")
 public class TestController {
